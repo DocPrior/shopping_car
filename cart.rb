@@ -22,6 +22,13 @@ class Shopping_carts
     @cart
   end
 
+  def before_tax_total
+    total = 0
+    @cart.each do |product|
+      total += product.price
+    end
+    total
+  end
 
 end
 
@@ -37,3 +44,7 @@ puts cart1.inspect
 cart1.remove_from_cart("mop")
 
 puts cart1.inspect
+
+cart1.add_to_cart("broom", 15)
+
+puts cart1.before_tax_total
